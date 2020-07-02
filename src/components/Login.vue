@@ -39,13 +39,18 @@ export default {
   },
   methods: {
     login () {
+      var _this = this
+      console.log(this.$store.state)
       this.$axios.post('/login', {
         username: this.loginForm.username,
         password: this.loginForm.password
       })
         .then(successResponse => {
           if (successResponse.data.code === 200) {
-            this.$router.replace({path: '/index'})
+            // this.$router.replace({path: '/index'})
+            _this.$store.commit('login', _this.loginForm)
+            var path = this.$route.query.redirect
+            _this.$router.replace({path: path === '/' || path === undefined ? '/index' : path})
           }
         })
         .catch(failResponse => {
