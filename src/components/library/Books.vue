@@ -87,7 +87,7 @@ export default {
         type: 'warning'
       }).then(() => {
         this.$axios
-          .post('/books/addOrUpdateBook', {id: id}).then(resp => {
+          .post('/books/addOrUpdateBook', {id: id, delFlag: 1}).then(resp => {
             if (resp && resp.data.code === 200) {
               this.loadBooks()
             }
