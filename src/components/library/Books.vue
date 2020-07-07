@@ -4,7 +4,7 @@
         <search-bar @onSearch="searchResult" ref="searchBar"></search-bar>
         <el-tooltip effect="dark" placement="right"
         v-for="item in books.slice((currentPage-1)*pagesize,currentPage*pagesize)"
-        :key="item.id">
+        :key="item.id"  v-if="books[0]">
           <p slot="content" style="font-size: 14px;margin-bottom: 6px">{{item.title}}</p>
           <p slot="content" style="font-size: 13px;margin-bottom: 6px">
             <span>{{item.author}}</span>
@@ -102,6 +102,7 @@ export default {
     },
     editBook (item) {
       this.$refs.edit.dialogFormVisible = true
+      console.log('*********item id,title,cover is ' + item.id + item.title + item.cover)
       this.$refs.edit.form = {
         id: item.id,
         cover: item.cover,

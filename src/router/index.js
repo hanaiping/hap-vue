@@ -26,6 +26,15 @@ export default new Router({
           }
         },
         {
+          path: '/',
+          name: 'index',
+          redirect: 'index',
+          component: Appindex,
+          meta: {
+            requireAuth: true
+          }
+        },
+        {
           path: '/library',
           name: 'Library',
           component: LibraryIndex,
