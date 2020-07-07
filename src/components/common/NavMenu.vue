@@ -35,7 +35,7 @@ export default {
         .then(result => {
           if (result.data.code === 200) {
             _this.$store.commit('logout')
-            _this.$router.replace('/login')
+            _this.$router.replace('/user/login')
           }
         })
     }
